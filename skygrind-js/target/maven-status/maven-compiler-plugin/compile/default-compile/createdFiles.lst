@@ -1,0 +1,6 @@
+net\skygrind\skygrindjs\script\event\SkyGrindEventExecutor.class
+net\skygrind\skygrindjs\script\SkyScript.class
+net\skygrind\skygrindjs\SkyGrindJS.class
+net\skygrind\skygrindjs\script\ScriptBukkit$1.class
+net\skygrind\skygrindjs\script\ScriptBukkit.class
+net\skygrind\skygrindjs\script\event\SkyGrindEventCallback.class

@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: tech.rayline.redemptive:redemptive-core:1.2-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/tech/rayline/redemptive/redemptive-core/1.2-SNAPSHOT/redemptive-core-1.2-20161106.070641-2.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/tech/rayline/redemptive/redemptive-core/1.2-SNAPSHOT/redemptive-core-1.2-20161106.070641-2-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/tech/rayline/redemptive/redemptive-core/1.2-SNAPSHOT/redemptive-core-1.2-20161106.070641-2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

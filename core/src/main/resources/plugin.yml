@@ -1,0 +1,4 @@
+name: Core
+main: net.skygrind.core.Core
+version: 0.1
+author: GitBash
