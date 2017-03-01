@@ -16,7 +16,6 @@ net\skygrind\skyblock\command\island\Invite$1.class
 net\skygrind\skyblock\region\RegionHandler.class
 net\skygrind\skyblock\command\island\Invite.class
 net\skygrind\skyblock\region\RegionSessionFactory.class
-net\skygrind\skyblock\island\additions\IslandPacks.class
 net\skygrind\skyblock\command\island\InviteAccept.class
 net\skygrind\skyblock\player\SkyPlayer.class
 net\skygrind\skyblock\command\SetSpawnCommand.class
@@ -27,7 +26,6 @@ net\skygrind\skyblock\schematic\SchematicLoader.class
 net\skygrind\skyblock\island\IslandRegistry.class
 net\skygrind\skyblock\misc\Logger.class
 net\skygrind\skyblock\region\RegionSession.class
-net\skygrind\skyblock\island\additions\PackType.class
 net\skygrind\skyblock\command\island\Create.class
 net\skygrind\skyblock\command\island\IslandCommand.class
 net\skygrind\skyblock\island\IslandGUIHandler.class

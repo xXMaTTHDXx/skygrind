@@ -1,5 +1,8 @@
 package net.skygrind.skyblock.command.island;
 
+import net.md_5.bungee.api.chat.BaseComponent;
+import net.md_5.bungee.api.chat.ClickEvent;
+import net.md_5.bungee.api.chat.TextComponent;
 import net.skygrind.core.command.SGCommand;
 import net.skygrind.skyblock.SkyBlock;
 import net.skygrind.skyblock.island.Island;
@@ -7,10 +10,10 @@ import net.skygrind.skyblock.island.IslandRegistry;
 import net.skygrind.skyblock.misc.MessageUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 import tech.rayline.core.command.CommandException;
-import tech.rayline.core.command.RDCommand;
 
 /**
  * Created by Matt on 2017-02-25.
@@ -24,7 +27,7 @@ public class Invite extends SGCommand {
     @Override
     protected void handleCommand(Player player, String[] args) throws CommandException {
         if (args.length < 1) {
-            player.sendMessage(ChatColor.RED + ChatColor.BOLD.toString() + "[!] " + ChatColor.GRAY + "/island invite [Player]");
+            MessageUtil.sendUrgent(player, "/island invite [Player]");
             return;
         }
 
@@ -33,28 +36,40 @@ public class Invite extends SGCommand {
         IslandRegistry registry = SkyBlock.getPlugin().getIslandRegistry();
 
         if (!registry.hasIsland(player)) {
-            player.sendMessage(ChatColor.RED + ChatColor.BOLD.toString() + "[!] " + ChatColor.GRAY + "You do not have an island!");
+            MessageUtil.sendUrgent(player, "You do not have an island!");
             return;
         }
 
         Island island = registry.getIslandForPlayer(player);
 
         if (target == null) {
-            player.sendMessage(ChatColor.RED + ChatColor.BOLD.toString() + "[!] " + ChatColor.GRAY + "That player is not currently online!");
+            MessageUtil.sendUrgent(player, "That player is not currently online!");
             return;
         }
 
         if (island.getMembers().size() >= island.getMaxPlayers()) {
-            player.sendMessage(ChatColor.RED + ChatColor.BOLD.toString() + "[!] " + ChatColor.GRAY + "You're currently restricted to 4 island members... To increase this visit out store at <link>");
+            MessageUtil.sendUrgent(player, "You're currently restricted to 4 island members...");
+            MessageUtil.sendServerTheme(player, "To increase this visit http://store.skygrind.net");
             return;
         }
 
-        player.sendMessage(ChatColor.GREEN + ChatColor.BOLD.toString() + "[!] " + ChatColor.GRAY + "Invited " + ChatColor.GOLD + target.getName() + ChatColor.GRAY + " to your island.");
+        MessageUtil.sendGood(player, "Invited " + ChatColor.GOLD + target.getName() + ChatColor.GREEN + " to join your island.");
 
-        MessageUtil.sendServerTheme(player, ChatColor.GRAY + "Invited " + target.getName() + " to your island.");
-        target.sendMessage(ChatColor.GRAY + "Type " + ChatColor.GREEN + ChatColor.BOLD.toString() + "/ACCEPT " +
-        ChatColor.GRAY + "or " + ChatColor.RED + ChatColor.BOLD.toString() + "/DECLINE");
+        TextComponent message = new TextComponent(ChatColor.GRAY + "You've been invited to join " + ChatColor.GOLD + player.getName() + ChatColor.GRAY + "'s island");
+        TextComponent accept = new TextComponent(ChatColor.GREEN + ChatColor.BOLD.toString() + " /ACCEPT ");
+        accept.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/accept"));
 
+        message.addExtra(accept);
+        message.addExtra(ChatColor.GRAY + "or ");
+
+        TextComponent decline = new TextComponent(ChatColor.RED + ChatColor.BOLD.toString() + "/DECLINE");
+        decline.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/decline"));
+        message.addExtra(decline);
+
+        BaseComponent[] comps = new BaseComponent[]{message};
+
+        target.playSound(target.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1,1);
+        target.spigot().sendMessage(comps);
         target.sendMessage(ChatColor.GRAY + "This invite expires in 3 minutes!");
 
         registry.getIslandInvites().put(target.getUniqueId(), island);

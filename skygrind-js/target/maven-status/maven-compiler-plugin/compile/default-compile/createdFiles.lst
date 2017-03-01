@@ -2,5 +2,9 @@ net\skygrind\skygrindjs\script\event\SkyGrindEventExecutor.class
 net\skygrind\skygrindjs\script\SkyScript.class
 net\skygrind\skygrindjs\SkyGrindJS.class
 net\skygrind\skygrindjs\script\ScriptBukkit$1.class
+net\skygrind\skygrindjs\script\command\SkyGrindCommandExecutor.class
+net\skygrind\skygrindjs\script\command\CommandRegistry.class
 net\skygrind\skygrindjs\script\ScriptBukkit.class
+net\skygrind\skygrindjs\script\command\SkyGrindCommandCallback.class
+net\skygrind\skygrindjs\script\ScriptBukkit$2.class
 net\skygrind\skygrindjs\script\event\SkyGrindEventCallback.class

@@ -3,15 +3,15 @@
   <component name="MavenProjectsManager">
     <option name="originalFiles">
       <list>
-        <option value="$PROJECT_DIR$/skyblock/pom.xml" />
         <option value="$PROJECT_DIR$/core/pom.xml" />
         <option value="$PROJECT_DIR$/hub/pom.xml" />
-        <option value="$PROJECT_DIR$/skyblockspace/pom.xml" />
+        <option value="$PROJECT_DIR$/skyblock/pom.xml" />
         <option value="$PROJECT_DIR$/skygrind-js/pom.xml" />
+        <option value="$PROJECT_DIR$/skyblockspace/pom.xml" />
       </list>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_6" default="false" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_3" default="false" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
   </component>
 </project>

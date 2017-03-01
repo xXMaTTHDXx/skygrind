@@ -9,18 +9,18 @@ import org.bukkit.entity.Player;
 public class MessageUtil {
 
     public static void sendUrgent(Player player, String msg) {
-        player.sendMessage(ChatColor.RED + ChatColor.BOLD.toString() + "[!] " + ChatColor.GRAY + msg);
+        player.sendMessage(ChatColor.RED + ChatColor.BOLD.toString() + "[!] " + ChatColor.RED + msg);
     }
 
     public static void sendInfo(Player player, String msg) {
-        player.sendMessage(ChatColor.GOLD + ChatColor.BOLD.toString() + "[!] " + ChatColor.GRAY + msg);
+        player.sendMessage(ChatColor.GOLD + ChatColor.BOLD.toString() + "[!] " + ChatColor.GOLD + msg);
     }
 
     public static void sendGood(Player player, String msg) {
-        player.sendMessage(ChatColor.GREEN + ChatColor.BOLD.toString() + "[!] " + ChatColor.GRAY + msg);
+        player.sendMessage(ChatColor.GREEN + ChatColor.BOLD.toString() + "[!] " + ChatColor.GREEN + msg);
     }
 
     public static void sendServerTheme(Player player, String msg) {
-        player.sendMessage(ChatColor.GRAY + ChatColor.BOLD.toString() + "(" + ChatColor.AQUA + ChatColor.BOLD.toString() + "S" + ChatColor.WHITE.toString() + "G" + ChatColor.GRAY + ChatColor.BOLD.toString() + ") " + msg);
+        player.sendMessage(ChatColor.GRAY + ChatColor.BOLD.toString() + "(" + ChatColor.AQUA + ChatColor.BOLD.toString() + "S" + ChatColor.WHITE + ChatColor.BOLD.toString() + "G" + ChatColor.GRAY + ChatColor.BOLD.toString() + ") " + msg);
     }
 }

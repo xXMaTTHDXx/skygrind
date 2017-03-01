@@ -1,20 +1,17 @@
 package net.skygrind.skyblock.command.island;
 
-import com.sk89q.worldedit.MaxChangedBlocksException;
 import net.skygrind.core.command.SGCommand;
 import net.skygrind.skyblock.SkyBlock;
 import net.skygrind.skyblock.island.IslandType;
+import net.skygrind.skyblock.misc.MessageUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
-import org.bukkit.event.inventory.InventoryType;
-import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import tech.rayline.core.command.CommandException;
-import tech.rayline.core.command.RDCommand;
 
 import java.util.Arrays;
 
@@ -35,11 +32,11 @@ public class Create extends SGCommand {
         }
 
         if (SkyBlock.getPlugin().getIslandRegistry().hasIsland(player)) {
-            player.sendMessage(ChatColor.RED + ChatColor.BOLD.toString() + "[!] " + ChatColor.GRAY + "You already have an island!");
+            MessageUtil.sendUrgent(player, "You already have an island!");
             return;
         }
 
-        player.sendMessage(ChatColor.GREEN + ChatColor.BOLD.toString() + "[!] " + ChatColor.GRAY + "Opening island selection.");
+        MessageUtil.sendGood(player, "Opening island selection...");
         openIslandGUI(player);
     }
 

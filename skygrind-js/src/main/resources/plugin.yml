@@ -2,3 +2,4 @@ name: skygrind-js
 main: net.skygrind.skygrindjs.SkyGrindJS
 version: 0.1
 description: Lol
+depend: [Core]

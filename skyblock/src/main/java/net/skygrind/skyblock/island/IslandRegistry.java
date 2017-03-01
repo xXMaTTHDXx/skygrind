@@ -1,38 +1,20 @@
 package net.skygrind.skyblock.island;
 
-import com.sk89q.worldedit.CuboidClipboard;
-import com.sk89q.worldedit.EditSession;
 import com.sk89q.worldedit.MaxChangedBlocksException;
-import com.sk89q.worldedit.blocks.BaseBlock;
-import com.sk89q.worldedit.blocks.BlockID;
-import com.sk89q.worldedit.bukkit.BukkitUtil;
-import com.sk89q.worldedit.bukkit.BukkitWorld;
-import com.sk89q.worldedit.bukkit.selections.CuboidSelection;
 import com.sk89q.worldedit.data.DataException;
-import com.sk89q.worldedit.regions.CuboidRegion;
-import com.sk89q.worldedit.schematic.SchematicFormat;
 import net.skygrind.skyblock.SkyBlock;
 import net.skygrind.skyblock.misc.LocationUtil;
-import net.skygrind.skyblock.misc.Logger;
-import net.skygrind.skyblock.player.SkyPlayer;
 import net.skygrind.skyblock.region.Region;
-import net.skygrind.skyblock.region.RegionHandler;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.block.Block;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.util.Vector;
-import org.hamcrest.core.Is;
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
 
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 import java.util.*;
 
@@ -243,7 +225,6 @@ public class IslandRegistry {
     }
 
     public void deleteIsland(Player player, Island island) {
-        //TODO find people on island
 
         for (Player pl : Bukkit.getOnlinePlayers()) {
             if (isInIslandRegion(island, pl.getLocation())) {
@@ -252,7 +233,7 @@ public class IslandRegistry {
             }
         }
 
-        File toDelete = new File(islandDir, island.getOwner().toString());
+        File toDelete = new File(islandDir, island.getOwner().toString() + ".yml");
 
         if (!toDelete.exists()) {
             return;
@@ -260,14 +241,27 @@ public class IslandRegistry {
         toDelete.delete();
 
 
-        CuboidSelection sel = new CuboidSelection(SkyBlock.getPlugin().getIslandWorld(), island.getContainer().getMin(), island.getContainer().getMax());
-        EditSession session = new EditSession(new BukkitWorld(SkyBlock.getPlugin().getIslandWorld()), 200000);
+        int minX = island.getContainer().getMin().getBlockX();
+        int minY = island.getContainer().getMin().getBlockY();
+        int minZ = island.getContainer().getMin().getBlockZ();
 
-        try {
-            session.setBlocks(new CuboidRegion(BukkitUtil.toVector(sel.getMinimumPoint().toVector()), BukkitUtil.toVector(sel.getMaximumPoint().toVector())), new BaseBlock(BlockID.AIR));
-        } catch (MaxChangedBlocksException e) {
-            e.printStackTrace();
+        int maxX = island.getContainer().getMax().getBlockX();
+        int maxY = island.getContainer().getMax().getBlockY();
+        int maxZ = island.getContainer().getMax().getBlockZ();
+
+        for (int x = minX; x < maxX; x++) {
+
+            for (int y = minY; y < maxY; y++) {
+
+                for (int z = minZ; z < maxZ; z++) {
+
+                    Block block = SkyBlock.getPlugin().getIslandWorld().getBlockAt(x,y,z);
+                    block.setType(Material.AIR);
+                }
+            }
         }
+
+
         SkyBlock.getPlugin().getRegionHandler().deleteRegion(island.getContainer());
         playerIslands.remove(island);
     }

@@ -5,7 +5,6 @@ import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.OfflinePlayer;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -33,8 +32,7 @@ public class Island {
         if (Bukkit.getPlayer(owner) == null) {
             OfflinePlayer player = Bukkit.getOfflinePlayer(owner);
             islandName = player.getName();
-        }
-        else {
+        } else {
             this.islandName = Bukkit.getPlayer(owner).getName();
         }
     }
@@ -84,6 +82,13 @@ public class Island {
     }
 
     public String getName() {
+        if (Bukkit.getPlayer(owner) == null) {
+            OfflinePlayer player = Bukkit.getOfflinePlayer(owner);
+            islandName = player.getName();
+        } else {
+            this.islandName = Bukkit.getPlayer(owner).getName();
+        }
+
         return islandName + "'s Island";
     }
 

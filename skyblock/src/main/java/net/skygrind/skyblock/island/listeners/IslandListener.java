@@ -3,6 +3,7 @@ package net.skygrind.skyblock.island.listeners;
 import net.skygrind.skyblock.SkyBlock;
 import net.skygrind.skyblock.island.Island;
 import net.skygrind.skyblock.island.IslandRegistry;
+import net.skygrind.skyblock.misc.MessageUtil;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -14,6 +15,7 @@ import org.bukkit.event.block.Action;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
+
 
 /**
  * Created by Matt on 2017-02-25.
@@ -35,6 +37,20 @@ public class IslandListener implements Listener {
             if (!conflict.getMembers().contains(placer.getUniqueId()) && !conflict.getOwner().equals(placer.getUniqueId())) {
                 placer.sendMessage(ChatColor.RED + ChatColor.BOLD.toString() + "[!] " + ChatColor.GRAY + "You do not have permission to build here!");
                 event.setCancelled(true);
+            }
+        }
+        else {
+            event.setCancelled(true);
+            if (location.getWorld().getName().equalsIgnoreCase(SkyBlock.getPlugin().getIslandWorld().getName())) {
+                MessageUtil.sendUrgent(placer, ChatColor.RED + "This is out of your islands region!");
+                MessageUtil.sendServerTheme(placer, ChatColor.YELLOW + "Store: http://store.skygrind.net");
+            }
+            else {
+
+                if (!placer.hasPermission("skygrind.build")) {
+                    MessageUtil.sendUrgent(placer, ChatColor.RED + "You do not have permission to build here!");
+                    return;
+                }
             }
         }
     }
