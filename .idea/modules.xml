@@ -5,8 +5,6 @@
       <module fileurl="file://$PROJECT_DIR$/core/core.iml" filepath="$PROJECT_DIR$/core/core.iml" />
       <module fileurl="file://$PROJECT_DIR$/hub/hub.iml" filepath="$PROJECT_DIR$/hub/hub.iml" />
       <module fileurl="file://$PROJECT_DIR$/skyblock/skyblock.iml" filepath="$PROJECT_DIR$/skyblock/skyblock.iml" />
-      <module fileurl="file://$PROJECT_DIR$/skyblockspace/skyblock-space.iml" filepath="$PROJECT_DIR$/skyblockspace/skyblock-space.iml" />
-      <module fileurl="file://$PROJECT_DIR$/skygrind-js/skygrind-js.iml" filepath="$PROJECT_DIR$/skygrind-js/skygrind-js.iml" />
     </modules>
   </component>
 </project>

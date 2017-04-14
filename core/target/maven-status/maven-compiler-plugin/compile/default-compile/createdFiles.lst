@@ -1,5 +1,5 @@
-net\skygrind\core\SkyPlugin.class
-net\skygrind\core\command\SGCommand.class
-net\skygrind\core\ServerPubSub.class
-net\skygrind\core\command\InvSee.class
-net\skygrind\core\Core.class
+net/skygrind/core/command/InvSee.class
+net/skygrind/core/command/SGCommand.class
+net/skygrind/core/SkyPlugin.class
+net/skygrind/core/Core.class
+net/skygrind/core/ServerPubSub.class
